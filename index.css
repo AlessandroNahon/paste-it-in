@@ -1,0 +1,60 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+form {
+  display: block;
+  height: 8rem;
+  background: #000a12;
+  border: 2px solid #000a12;
+  border-radius: 0.25rem;
+  padding: 1.25rem;
+}
+
+.inputs {
+  display: flex;
+}
+
+.inputs input {
+  max-width: 3rem;
+  min-height: 3rem;
+  margin: 0 0.5rem;
+  text-align: center;
+  padding: 0;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.inputs input:focus {
+  padding: 0;
+  outline-color: #0039cb;
+}
+
+input[type='submit'] {
+  letter-spacing: 0.1rem;
+  background: #263238;
+  color: rgba(255, 255, 255, 0.5);
+  border: 0;
+  outline: 0;
+  border-radius: 0.25rem;
+  min-height: 3rem;
+  width: calc(100% - 1rem);
+  margin: 1rem auto auto 0.5rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+input[type='submit'].canSubmit {
+  background: #00a152;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+}
