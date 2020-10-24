@@ -12,29 +12,37 @@ function handleInput(e) {
     canSubmit = value.length > 0
 
     input.addEventListener('keyup', (e) => {
-      if (e.keyCode === 8 || e.keyCode == 46)
+      if (e.keyCode === 8 || e.keyCode == 46) {
+        canSubmit = false
         input.previousElementSibling?.select()
+      }
 
       if (e.keyCode === 39) input.nextElementSibling?.select()
 
       if (e.keyCode === 37) input.previousElementSibling?.select()
+
+      if (canSubmit) {
+        submit.classList.add('canSubmit')
+      } else {
+        submit.classList.remove('canSubmit')
+      }
     })
   })
 
   if (input.nextElementSibling && value) {
     input.nextElementSibling?.select()
   }
-
-  if (canSubmit) {
-    submit.classList.add('canSubmit')
-  } else {
-    submit.classList.remove('canSubmit')
-  }
 }
 
 function handlePaste(e) {
   const paste = e.clipboardData.getData('text')
-  inputs.forEach((input, i) => (input.value = paste[i] || ''))
+  let count = 0
+  inputs.forEach((input, i) => {
+    input.value = paste[i] || ''
+    count += input.value.length > 0
+  })
+
+  inputs[count].select()
 }
 
 function handleSubmitOnPaste(e) {
