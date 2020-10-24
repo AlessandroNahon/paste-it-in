@@ -45,7 +45,7 @@ function handlePaste(e) {
   inputs[count].select()
 }
 
-function handleSubmitOnPaste(e) {
+function handleSubmit(e) {
   e.preventDefault()
   let canSubmit = false
 
@@ -55,7 +55,7 @@ function handleSubmitOnPaste(e) {
   })
 
   if (canSubmit) {
-    e.target.form.submit()
+    e.target.submit()
   }
 }
 
@@ -63,4 +63,6 @@ inputs[0].addEventListener('paste', handlePaste)
 
 form.addEventListener('input', handleInput)
 
-form.addEventListener('paste', handleSubmitOnPaste)
+form.addEventListener('paste', handleSubmit)
+
+form.addEventListener('submit', handleSubmit)
