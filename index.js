@@ -1,33 +1,29 @@
 const form = document.querySelector('[name="verify"]')
 const inputs = form.querySelectorAll('.inputs input')
+
+const inputsArr = Array.prototype.slice.call(inputs)
 const submit = document.querySelector('[type="submit"]')
 
 function handleInput(e) {
   const input = e.target
   const value = input.value.replace(/[^0-9]/g, '').trim()
-  let canSubmit = false
+  const canSubmit = inputsArr.every((input) => input.value.length > 0)
 
   inputs.forEach((input) => {
-    const value = input.value.trim()
-    canSubmit = value.length > 0
-
     input.addEventListener('keyup', (e) => {
-      if (e.keyCode === 8 || e.keyCode == 46) {
-        canSubmit = false
+      if (e.keyCode === 8 || e.keyCode == 46 || e.keyCode === 37) {
         input.previousElementSibling?.select()
       }
 
       if (e.keyCode === 39) input.nextElementSibling?.select()
-
-      if (e.keyCode === 37) input.previousElementSibling?.select()
-
-      if (canSubmit) {
-        submit.classList.add('canSubmit')
-      } else {
-        submit.classList.remove('canSubmit')
-      }
     })
   })
+
+  if (canSubmit) {
+    submit.classList.add('canSubmit')
+  } else {
+    submit.classList.remove('canSubmit')
+  }
 
   if (input.nextElementSibling && value) {
     input.nextElementSibling?.select()
